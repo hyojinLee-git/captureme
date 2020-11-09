@@ -1,0 +1,47 @@
+/*모든 웹페이지 공통 css*/
+
+body{
+	background-image:url('../img/bg 3.png');
+	background-size:cover;
+	background-repeat: no-repeat;
+	margin: 20px;
+}
+
+a {
+	color: #fff; 
+	text-decoration: none; 
+	outline: none
+}
+
+ a:hover, a:active {
+ 	text-decoration: none; 
+ 	color:#fff; 
+ }
+ hr{
+ 	border:0;
+ 	background:white;
+ 	height:3px;
+ }
+input{
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+	border-style: solid;
+	border-color: white;
+	border-width: 3px;
+	background-color: inherit;
+}
+
+.CaptureMe{
+	color: white;
+	font-size: 30px;
+}
+
+.configure{
+	float: right;
+	padding:20px;
+}
+.contactInfo{
+	color:white;
+	text-align: center;
+}
