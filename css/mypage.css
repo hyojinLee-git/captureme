@@ -2,8 +2,41 @@ h1{
 	text-align: center;
 	font-size: 50px;
 }
+.applicationListContainer{
+	display: flex;
+	flex-direction: row;
+}
+.applicationList{
+	display: flex;
+	flex-direction:column;
+	flex-basis: 800px;
+	padding: 20px;
+}
+.application{
+	border-radius: 5px;
+	display: flex;
+	padding:10px;
+	margin:5px;
+	background-color: rgba(0,0,0,0.4);
+}
 .picture{
-	float:left;
-	padding: 10px;
-	width:300px;
+	border-radius: 5px;
+	flex-shrink: 0;
+	height:auto;
+	width:120px;
+	max-height: 120px;
+	overflow: hidden; 
+}
+
+.userName{
+	font-weight: bold;
+	font-size: 20px;
+}
+.Empty{
+	display: flex;
+	flex-basis: 300px;
+
+}
+.profileDescription{
+	margin: 10px;
 }
