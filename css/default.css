@@ -5,6 +5,7 @@ body{
 	background-size:cover;
 	background-repeat: no-repeat;
 	margin: 20px;
+	color: white;
 }
 
 a {
@@ -22,7 +23,7 @@ a {
  	background:white;
  	height:3px;
  }
-input{
+input,button{
 	color: white;
 	font-weight: bold;
 	font-size: 20px;
@@ -38,7 +39,8 @@ input{
 }
 
 .configure{
-	float: right;
+	position: absolute;
+	right: 10px;
 	padding:20px;
 }
 .contactInfo{
