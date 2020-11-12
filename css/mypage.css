@@ -18,6 +18,11 @@ h1{
 	padding:10px;
 	margin:5px;
 	background-color: rgba(0,0,0,0.4);
+	animation-duration: 1s;
+	animation-name: fadein;
+}
+.application:hover{
+	background-color: black;
 }
 .picture{
 	border-radius: 5px;
@@ -26,6 +31,14 @@ h1{
 	width:120px;
 	max-height: 120px;
 	overflow: hidden; 
+}
+@keyframes fadein{
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
 }
 
 .userName{
@@ -39,4 +52,5 @@ h1{
 }
 .profileDescription{
 	margin: 10px;
+	flex-basis: 500px;
 }
