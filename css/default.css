@@ -31,6 +31,7 @@ input,button{
 	border-color: white;
 	border-width: 3px;
 	background-color: inherit;
+	margin: 2px;
 }
 
 .CaptureMe{
