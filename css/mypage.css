@@ -20,10 +20,12 @@ h1{
 	background-color: rgba(0,0,0,0.4);
 	animation-duration: 1s;
 	animation-name: fadein;
+	transition: background-color 0.2s;
 }
 .application:hover{
-	background-color: black;
+	background-color: rgba(0,0,0,1);
 }
+
 .picture{
 	border-radius: 5px;
 	flex-shrink: 0;
@@ -32,6 +34,7 @@ h1{
 	max-height: 120px;
 	overflow: hidden; 
 }
+
 @keyframes fadein{
 	from{
 		opacity: 0;
