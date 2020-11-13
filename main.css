@@ -9,11 +9,13 @@ body{
 
 .header{
     display: flex;
+    border: solid 5px red;
 }
 .search {
     height: 2rem;
     display: inline-flex;
-    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 .search #searchbar{
     width: 500px;
