@@ -9,7 +9,7 @@ body{
 
 .header{
     display: flex;
-    border: solid 5px red;
+
 }
 .search {
     height: 2rem;
