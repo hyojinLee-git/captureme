@@ -23,7 +23,7 @@ body{
 
 }
 .header .configure{
-
+    
     margin-left: auto;
 }
 #toggle_button{
@@ -52,6 +52,7 @@ body{
 }
 
 .column figure{
+    
     display: inline-block;
     margin:0;
     margin-bottom: 15px;
@@ -63,6 +64,20 @@ body{
     border-top-right-radius: 1.2rem;
     border-bottom-left-radius: 1.2rem;
     border-bottom-right-radius: 1.2rem;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+}
+.profile{
+    position: absolute;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.profile img{
+    border-radius: 100%;
+}
+figure #first:hover{
+    opacity: 1;
 }
 .page_number{
     text-align: center;

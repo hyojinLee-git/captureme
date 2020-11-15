@@ -1,0 +1,12 @@
+.profile_part img{
+    width: 300px;
+}
+.profile_part{
+    display: inline-flex;
+}
+#profile_description{
+    display: inline;
+}
+body{
+    background-image: url('img/bg.jpg');
+}
