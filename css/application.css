@@ -1,0 +1,55 @@
+.applicationListContainer{
+	display: flex;
+	flex-direction: row;
+}
+.applicationList{
+	display: flex;
+	flex-direction:column;
+	flex-basis: 800px;
+	padding: 20px;
+}
+.application{
+	border-radius: 5px;
+	display: flex;
+	padding:10px;
+	margin:5px;
+	background-color: rgba(0,0,0,0.4);
+	animation-duration: 1s;
+	animation-name: fadein;
+	transition: background-color 0.2s;
+}
+.application:hover{
+	background-color: rgba(0,0,0,1);
+}
+
+.picture{
+	border-radius: 5px;
+	flex-shrink: 0;
+	height:auto;
+	width:120px;
+	max-height: 120px;
+	overflow: hidden; 
+}
+
+@keyframes fadein{
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
+}
+
+.userName{
+	font-weight: bold;
+	font-size: 20px;
+}
+.Empty{
+	display: flex;
+	flex-basis: 300px;
+
+}
+.profileDescription{
+	margin: 10px;
+	flex-basis: 500px;
+}

@@ -5,6 +5,8 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/default.css">
 	<link rel="stylesheet" type="text/css" href="../css/mypage.css">
+	<link rel="stylesheet" type="text/css" href="../css/application.css">
+	<link rel="stylesheet" type="text/css" href="../css/acception.css">
 </head>
 <body>
 	<header> <!-- 검색 및 네비 -->
@@ -15,14 +17,21 @@
 			<button><a href="#">설정</a></button>
 		</span><br><br>
 	</header>
-	<section ><!-- 본문 -->
-		<h1>마이페이지</h1>
+	<section><!-- 본문 -->
+		<h1><a href="mypage.html">마이페이지</a></h1>
 		<hr>
+		<br><br>
 		<article>
 			<div class="applicationListContainer">
+				<input type="button" value="내 프로필" class="tabButton" name="profile">
+				<input type="button" value="사진요청 목록" class="tabButton" name="applicationList">
+				<input type="button" value="사진요청 수락목록" class="tabButton" name="acceptionList">
+			</div>
+			<div class="applicationListContainer">
 				<div class="Empty"></div>
-				<ul class="applicationList">
-				</ul>
+				<div class="profile tabList"></div>
+				<ul class="applicationList tabList"></ul>
+				<ul class="acceptionList tabList"></ul>
 				<div class="Empty"></div>
 			</div>
 		</article>
@@ -31,6 +40,6 @@
 		<p>Copyright ⓒ 2020 captureMe All Rights Reserved</p>
 	</footer>
 	<script type="text/javascript" src="../js/applicationList.js"></script>
-	</script>
+	<script type="text/javascript" src="../js/tab.js"></script>
 </body>
 </html>

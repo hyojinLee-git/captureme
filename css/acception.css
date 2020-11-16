@@ -1,0 +1,6 @@
+.acceptionList{
+	display: flex;
+	flex-direction:column;
+	flex-basis: 800px;
+	padding: 20px;
+}

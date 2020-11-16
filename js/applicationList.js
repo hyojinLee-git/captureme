@@ -21,7 +21,7 @@ function applicationNode(user,src,date,location){
 	</li>
 */
 
-function appendApplication(applicationNode){
+function appendApplication(applicationNode,destiny){
 	var userNameDiv=createTag("div","userName",applicationNode.user);
 	var dateDiv=createTag("div","",applicationNode.date);
 	var locationDiv=createTag("div","",applicationNode.location);
@@ -34,23 +34,25 @@ function appendApplication(applicationNode){
 	var img=createTag("img","picture","");
 	img.src=applicationNode.src;
 
-	var acceptionButton=createTag("input","","");
-	acceptionButton.type="button";
-	acceptionButton.value="수락";
-	var declineButton=createTag("input","","");
-	declineButton.type="button";
-	declineButton.value="거절";
-
 	var applicationAcception=createTag("div","applicationAcception","");
-	applicationAcception.appendChild(acceptionButton);
-	applicationAcception.appendChild(declineButton);
+	if(destiny=="applicationList"){
+		var acceptionButton=createTag("input","","");
+		acceptionButton.type="button";
+		acceptionButton.value="수락";
+		var declineButton=createTag("input","","");
+		declineButton.type="button";
+		declineButton.value="거절";
+	
+		applicationAcception.appendChild(acceptionButton);
+		applicationAcception.appendChild(declineButton);
+	}
 
 	var listTag=createTag("li","application","");
 	listTag.appendChild(img);
 	listTag.appendChild(profileDiv);
 	listTag.appendChild(applicationAcception);
 
-	var applicationList= document.getElementsByClassName("applicationList")[0];
+	var applicationList= document.getElementsByClassName(destiny)[0];
 	applicationList.append(listTag);
 }
 
@@ -68,7 +70,16 @@ function createTag(tagName,className,innerText){
 
 function init(){ //예시
 	var first=new applicationNode("정국","../img/userPhoto/test1.jpg","2020년11월 11일","과기대 향학로");
-	appendApplication(first);
+	appendApplication(first,"applicationList");
+	appendApplication(first,"applicationList");
+	appendApplication(first,"applicationList");
+	appendApplication(first,"applicationList");
+	appendApplication(first,"applicationList");
+	appendApplication(first,"applicationList");
+	var first=new applicationNode("nuguenzi Molla","../img/userPhoto/test2.png","2020년11월 11일","과기대 향학로");
+	appendApplication(first,"acceptionList");
+	appendApplication(first,"acceptionList");
+	appendApplication(first,"acceptionList");
 }
 
 init();
