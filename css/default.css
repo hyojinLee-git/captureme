@@ -4,6 +4,7 @@ body{
 	background-image:url('../img/bg 3.png');
 	background-size:cover;
 	background-repeat: no-repeat;
+	background-attachment: fixed;
 	margin: 20px;
 	color: white;
 }

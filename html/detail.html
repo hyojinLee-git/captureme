@@ -1,0 +1,148 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../captureme/css/default.css">
+    <style>
+        body{
+            background-image: url("../img/bg.jpg");
+        }
+        .swiper-container {
+            width: 600px;
+            height: auto;
+        }
+
+        .gallbox {position: relative;height: 100%; overflow: hidden; margin: 20px;}
+        .gallbox img {
+            display: block; 
+            width: 100%;
+           /* border-top-left-radius: 1.2rem;
+            border-top-right-radius: 1.2rem;
+    */
+        }
+        .gallbox .description p{
+            position:absolute;
+            margin-bottom: 0;
+            bottom: 0; 
+            left:0; 
+            width:100%; 
+            height: 100px;
+            text-align: center;
+            background-color:#FFFFFF; 
+            color:#000000; 
+            font-size: 16px; 
+            padding: 10px;
+
+
+        }
+        .gallbox .description a{
+            position:absolute; 
+            bottom: 20; 
+            right:0; 
+   
+            text-align: center;
+            text-decoration: none;
+            /*background-color:#FFFFFF;*/ 
+            color:#000000; 
+            font-size: 16px; 
+            padding: 10px;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <span class="CaptureMe"><a href="#">캡쳐미</a></span>
+        <div class="search">
+            <input type="text" id='searchbar'>
+            <input type="button" value="검색">
+        </div>
+        <div class="configure">
+            <a href="photographer.html"><input type="button" value="사진사" id="toggle_button"></a>
+            <ul>
+                <li><a href="mypage.html">마이페이지</a></li>
+                <li><a href="#">알림</a></li>
+                <li><a href="#">login</a></li>
+            </ul>
+        </div>
+    </header>
+    <body>
+        <!-- Slider main container -->
+        <div class="swiper-container">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <div class="gallbox">
+                    <img src="../img/model_detail/model_detail1.jpg" alt="image1">
+                    <div class="description">
+                        <p>text</p>
+                        <a href="#">신청하기</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="gallbox">
+                    <img src="../img/model_detail/model_detail2.jpg" alt="image2">
+                    <div class="description">
+                        <p>text</p>
+                        <a href="#">신청하기</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="gallbox">
+                    <img src="../img/model_detail/model_detail3.jfif" alt="image3">
+                    <div class="description">
+                        <p>text</p>
+                        <a href="#">신청하기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+    
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+    
+    </div>
+        <!--slider cdn-->
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    
+        <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+          
+            // If we need pagination
+            pagination: {
+              el: '.swiper-pagination',
+            },
+          
+            // Navigation arrows
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            }
+          
+            // And if we need scrollbar
+           /* scrollbar: {
+              el: '.swiper-scrollbar',
+            }
+            */
+          })
+        </script>
+</body>
+</html>

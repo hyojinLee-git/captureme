@@ -9,6 +9,7 @@ function ChangeTabContent(tabName){
 		}
 	}
 }
+
 function tabChangeImpact(e){
 	var tabs=document.getElementsByClassName("tabButton");
 	for(var i=0;i<tabs.length;i++){
@@ -22,20 +23,24 @@ function tabChangeImpact(e){
 	e.target.style.color="black";
 	ChangeTabContent(e.target.name);
 }
+
 function addEventToTab(){	
 	var tabButton=document.getElementsByClassName("tabButton");
 	for(var i=0;i<tabButton.length;i++){
 		tabButton[i].onclick=tabChangeImpact;
 	}
 }
+
 function initializeHidden(){
 	var tabList=document.getElementsByClassName("tabList");
 	for(var i=0;i<tabList.length;i++){
 		tabList[i].style.display="none";
 	}
 }
+
 function init(){
 	addEventToTab();
 	initializeHidden();
 }
+
 init();

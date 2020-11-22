@@ -1,0 +1,16 @@
+.column{
+    column-width: 300px;
+    column-gap: 5px;
+}
+.column figure{
+    display: inline-flex;
+    margin:0;
+    padding:5px;
+}
+.column figure img{
+    width:100%;
+}
+
+figure #first:hover{
+    opacity: 1;
+}

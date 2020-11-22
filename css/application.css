@@ -21,6 +21,10 @@
 .application:hover{
 	background-color: rgba(0,0,0,1);
 }
+.profileDescription div{
+	margin-top:5px;
+	margin-left:10px;
+}
 
 .picture{
 	border-radius: 5px;
@@ -47,7 +51,7 @@
 .Empty{
 	display: flex;
 	flex-basis: 300px;
-
+	flex-shrink: 20;
 }
 .profileDescription{
 	margin: 10px;
