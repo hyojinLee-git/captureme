@@ -1,12 +1,21 @@
-.profile_part img{
-    width: 300px;
+h1{
+	text-align: center;
+	font-size: 50px;
 }
-.profile_part{
-    display: inline-flex;
+.tabButton{
+	width:33%;
+	border-bottom-style:none;
+	padding: 10px;
+	background-color: rgba(255,255,255,0.15);
+	border-radius: 10px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	margin: 10px;
 }
-#profile_description{
-    display: inline;
-}
-body{
-    background-image: url('img/bg.jpg');
+.tabButtonClicked{
+	width:33%;
+	border-bottom-style:none;
+	padding: 10px;
+	background-color: white;
+	color:black;
 }
