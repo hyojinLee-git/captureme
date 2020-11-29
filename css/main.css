@@ -1,6 +1,6 @@
 
 body{
-    background-image: url("img/bg.jpg");
+    background-image: url("../img/bg.jpg");
 }
 
 .CaptureMe a{
@@ -85,6 +85,8 @@ figure #first:hover{
     text-align: center;
 }
 
-.footer{
-    border-top: solid 5px white;
+.contactInfo{
+    border-top: solid 3px white;
+    padding-top: 5px;
+    margin-top: 5px;
 }

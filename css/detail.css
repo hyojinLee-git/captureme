@@ -1,0 +1,93 @@
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+
+.mySlides {
+    display: none;
+}
+
+.item{
+    display: flex;
+}
+img {vertical-align: middle;}
+
+/*가로가 긴 이미지를 위한 크기 수정 필요*/
+/* Slideshow container */
+.slideshow-container {
+  max-width: 800px;
+  max-height: 600px;
+  position: relative;
+  margin: auto; 
+  background-color: white;
+  display: flex;
+  border-radius: 2.5rem;
+
+}
+
+
+.slideshow-container img{
+    /* max-width: 500px; */
+    width: auto;
+    max-height: 700px;
+    left: 0px;
+    border-top-left-radius: 2.5rem;
+    border-bottom-left-radius: 2.5rem;
+    
+}
+/* Next & previous buttons */
+
+.slideshow-container .prev img, .slideshow-container .next img{
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    max-width: 30px;
+    max-height: 30px;
+    margin-top: -22px;
+
+}
+
+/* Position the "next button" to the right */
+.prev img{
+    left: 0px;
+    z-index: 2;
+}
+
+.next img{
+    right: 0px;
+    left: auto;
+    z-index: 2;
+}
+
+/* 옆으로 어캐붙이지 */
+/* Caption text */
+.slideshow-container .text {
+  color:black;
+  font-size: 15px;
+  padding: 8px 12px;
+  height: 100%;
+  text-align: center;
+    z-index: 1;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
