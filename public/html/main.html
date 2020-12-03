@@ -3,34 +3,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Capture Me</title>
-    
-    <link rel="stylesheet" href="../../captureme/css/default.css">
+    <link rel="stylesheet" href="../css/fontello-840194d4/css/fontello.css">
     <link rel="stylesheet" href="../css/main.css" />
-
+    <link rel="stylesheet" href="../css/default.css">
 </head>
 <body>
-    <header class="header">
-        <span class="CaptureMe"><a href="#">캡쳐미</a></span>
+    <header id="header">
+        <div class="CaptureMe"><a href="#">캡쳐미</a></div>
         <div class="search">
             <input type="text" id='searchbar'>
-            <input type="button" value="검색">
+            <button class="icon-search"></button>
         </div>
         <div class="configure">
-            <a href="photographer.html"><input type="button" value="사진사" id="toggle_button"></a>
             <ul>
-                <li><a href="mypage.html">마이페이지</a></li>
-                <li><a href="#">알림</a></li>
-                <li><a href="#">login</a></li>
+                <!-- <li class="none">I Need</li> -->
+                <li><a href="photographer.html" class="toggle_button">I Need </a></li>
+                <li><a href="mypage.html" >마이페이지</a></li>
+                <li><a href="#">logout</a></li>
             </ul>
         </div>
     </header>
-    <section class="main">
+    <section id="main">
         <div class="column" id="photo">
-            <figure id="first">
+            <div>
                 <a href="detail.html"><img src="../img/model/model1.jfif"></a>
-            </figure>
+                <h3>description</h3>
+            </div>
             <figure>
                 <img src="../img/model/model2.jpg">
+                <!-- <img src="../img/profile/model_profile.jpg"> -->
             </figure>
             <figure>
                 <img src="../img/model/model3.jpg">
@@ -54,11 +55,11 @@
                 <img src="../img/model/model9.jpg">
             </figure>
         </div>
-        <div class="profile">
+        <!-- <div class="profile">
             <figure>
                 <img src="../img/profile/model_profile.jpg">
             </figure>
-        </div>
+        </div> -->
         <!--page number-->
         <!--서버에서 처리-->
         <div class="page_number">

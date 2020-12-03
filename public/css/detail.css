@@ -57,8 +57,10 @@ img {vertical-align: middle;}
     z-index: 2;
 }
 
-/* 옆으로 어캐붙이지 */
 /* Caption text */
+.slideshow-container .description{
+    flex-direction: column;
+}
 .slideshow-container .text {
   color:black;
   font-size: 15px;
@@ -67,6 +69,14 @@ img {vertical-align: middle;}
   text-align: center;
     z-index: 1;
 }
+
+.slideshow-container .apply input, button{
+    color: black;
+    max-height: 2rem;
+    color: black;
+}
+
+
 
 /* The dots/bullets/indicators */
 .dot {

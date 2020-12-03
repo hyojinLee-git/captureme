@@ -6,10 +6,11 @@
     <link rel="stylesheet" href="../css/detail.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/default.css">
+    
 
 </head>
 <body>
-    <header class="header">
+    <header id="header">
         <span class="CaptureMe"><a href="main.html">캡쳐미</a></span>
         <div class="search">
             <input type="text" id='searchbar'>
@@ -24,21 +25,30 @@
             </ul>
         </div>
     </header>
-    <section>
+    <section id="main">
         <div class="slideshow-container">
             <div class="mySlides fade">
                 <img class="item image" src="../img/model_detail/model_detail1.jfif" style="height:100%">
-                <div class="item text">Caption Text</div>
+                <div class="item description">
+                    <div class="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi pariatur voluptas magni, distinctio non quos sequi illo ratione quibusdam quidem ipsum labore illum officia recusandae ducimus rerum hic ab officiis!</div>
+                    <a href="#" class="apply"><input type="button" value="신청하기"></a>
+                </div>
             </div>
             
             <div class="mySlides fade">
                 <img class="item image" src="../img/model_detail/model_detail2.jpg" style="height:100%">
-                <div class="item text">Caption Two</div>
+                <div class="item description">
+                    <div class="text">Caption Two</div>
+                    <a href="#" class="apply"><input type="button" value="신청하기"></a>
+                </div>
             </div>
             
             <div class="mySlides fade">
                 <img class="item image" src="../img/model_detail/model_detail3.jpg" style="height:100%">
-                <div class="item text">Caption Three</div>
+                <div class="item description">
+                    <div class="text">Caption Three</div>
+                    <a href="#" class="apply"><input type="button" value="신청하기"></a>
+                </div>
             </div>
             
             <a class="prev" onclick="plusSlides(-1)"><img src="../img/free-icon-left-arrow-271220.png"></a>
