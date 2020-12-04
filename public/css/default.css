@@ -37,13 +37,14 @@ input,button{
 	justify-content: center;
 }
 
-
-
-.configure{
-	position: absolute;
-	right: 10px;
-	padding:20px;
+#header{
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    padding-top: 1rem;
 }
+
+
 .contactInfo{
 	color:white;
 	text-align: center;
