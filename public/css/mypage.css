@@ -19,3 +19,16 @@ h1{
 	background-color: white;
 	color:black;
 }
+
+article>a{
+	color: rgba(255, 255, 255, 0.8);
+	font-weight: bold;
+	font-size: 15px;
+	border-style: solid;
+	border-color: rgba(255, 255, 255, 0.8);
+	border-width: 1.5px;
+	background-color: inherit;
+	border-radius: 2rem;
+	margin: 2px;
+	justify-content: center;
+}
