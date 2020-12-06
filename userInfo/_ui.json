@@ -1,0 +1,15 @@
+{
+    "account": {
+        "id": null,
+        "password": null,
+        "name": null,
+        "phoneNumber": null
+    },
+    "application": [],
+    "acception": [],
+    "photoInfo": {
+        "profileSrc": null,
+        "detailSrcAr":[],
+        "photoSrcAr":[]
+    }
+}

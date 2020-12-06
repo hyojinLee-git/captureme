@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CaptureMe</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../css/default.css">
+    <link rel="stylesheet" type="text/css" href="../css/mypage.css">
+    <link rel="stylesheet" type="text/css" href="../css/imagearr.css">
+</head>
+<body>
+	<header> <!-- 검색 및 네비 -->
+		<span class="CaptureMe"><a href="main">캡쳐미</a></span>
+		<span class="configure">
+			<button><a href="mypage">마이페이지</a></button>
+			<button><a href="logoutPage">logout</a></button>
+		</span><br><br>
+	</header>
+	<section><!-- 본문 -->
+		<h1><a href="mypage">마이페이지</a></h1>
+		<hr>
+		<br><br>
+		<article>
+			<div class="profile tabList">
+                <div class="userInfo">
+                    <img src="" class="profileImage" alt="dd">${userInfo.photoInfo.profilesrc}
+                    <div class="userInfoDescription">
+                        <div class="profileUserID">${request.session.userId}</div>
+                        <div class="uploadCount">게시물 <b>${userInfo.photoInfo.photoCount}</b></div>
+                        <div class="profileUserName">${userInfo.account.name}</div>
+                        <button>프로필 수정</button>
+                    </div>
+                </div>
+                <div class="column" id="photo">
+                    <figure id="first">
+                        <img src="../img/userPhoto/test1.jpg">
+                        <caption>삭제</caption>
+                    </figure>
+                </div>
+            </div>`;
+		</article>
+	</section>
+	<footer class="contactInfo"> <!-- Contact Info... etc -->
+		<p>Copyright ⓒ 2020 captureMe All Rights Reserved</p>
+	</footer>
+</body>
+</html>

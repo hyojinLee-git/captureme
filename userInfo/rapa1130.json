@@ -5,24 +5,24 @@
         "name": "안병헌",
         "phoneNumber": "01021681150"
     },
-    "application":[
+    "application": [],
+    "acception": [
         {
-            "src":"../img/profile/model_profile.jpg",
-            "name":"이름",
-            "time":"2022년 1월 12일",
-            "location":"강원도 속초시 교동"
+            "id": "rapa1130",
+            "time": "2022년 1월 12일",
+            "location": "강원도 속초시 교동"
         }
     ],
-    "acception":[
-        {
-            "src":"../img/profile/model_profile.jpg",
-            "name":"이름",
-            "time":"2022년 1월 12일",
-            "location":"강원도 속초시 교동"
-        }
-    ],
-    "photoInfo":{
-        "photoCount":0,
-        "profilesrc":"../img/profile/model_profile.jpg"
+    "photoInfo": {
+        "profileSrc": "../img/profile/model_profile.jpg",
+        "detailSrc": [
+            "../img/profile/model_profile.jpg",
+            "../img/profile/model_profile.jpg"
+        ],
+        "photoSrcAr": [
+            "../img/profile/model_profile.jpg",
+            "../img/profile/model_profile.jpg",
+            "../img/profile/model_profile.jpg"
+        ]
     }
 }
