@@ -12,31 +12,45 @@
 	<link rel="stylesheet" href="../css/header.css">
 </head>
 <body>
+<<<<<<< HEAD
 	<header id="header"> <!-- 검색 및 네비 -->
-		<span class="CaptureMe"><a href="main.html">캡쳐미</a></span>
+		<span class="CaptureMe"><a href="main">캡쳐미</a></span>
+		<span class="configure">
+			<button><a href="mypage">마이페이지</a></button>
+			<button><a href="logoutPage">logout</a></button>
+		</span><br><br>
+		<!-- <span class="CaptureMe"><a href="main.html">캡쳐미</a></span>
 		<div class="configure">
             <ul>
-                <!-- <li class="none">I Need</li> -->
+                <li class="none">I Need</li>
                 <li><a href="photographer.html" class="toggle_button">I Need </a></li>
                 <li><a href="mypage.html" >마이페이지</a></li>
                 <li><a href="#">logout</a></li>
             </ul>
-        </div>
+        </div> -->
 		<!-- <span class="configure">
 			<button><a href="mypage.html">마이페이지</a></button>
 			<button><a href="#">알림</a></button>
 			<button><a href="#">설정</a></button>
 		</span><br><br> -->
+=======
+	<header id="header"> <!-- 검색 및 네비 -->
+		<span class="CaptureMe"><a href="main">캡쳐미</a></span>
+		<span class="configure">
+			<button><a href="mypage">마이페이지</a></button>
+			<button><a href="logoutPage">logout</a></button>
+		</span><br><br>
+>>>>>>> 0e5cf48eea9f58eee73245e122b0f6512c0d79d5
 	</header>
 	<section><!-- 본문 -->
-		<h1><a href="mypage.html">마이페이지</a></h1>
+		<h1><a href="mypage">마이페이지</a></h1>
 		<hr>
 		<br><br>
 		<article>
 			<div class="applicationListContainer">
-				<input type="button" value="내 프로필" class="tabButton" name="profile">
-				<input type="button" value="사진요청 목록" class="tabButton" name="applicationList">
-				<input type="button" value="요청 수락목록" class="tabButton" name="acceptionList">
+				<a class="tabButton" name="profile" href="mypage/profile">내 프로필</a>
+                <button class="tabButton" name="applicationList"><a href="">사진요청 목록</a></button>
+                <button class="tabButton" name="acceptionList"><a href="#">요청 수락목록</a></button>
 			</div>
 			<div class="applicationListContainer">
 				<div class="Empty"></div>

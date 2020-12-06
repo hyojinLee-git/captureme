@@ -5,60 +5,34 @@
     <title>Apply</title>
     <link rel="stylesheet" href="../css/default.css">
     <link rel="stylesheet" href="../css/apply.css">
-    <script>
-        function apply() {
-            var id = document.getElementsByClassName('input')[0];
-            var password = document.getElementsByClassName('input')[1];
-            var name = document.getElementsByClassName('input')[2];
-            var phonenumber = document.getElementsByClassName('input')[3];
-
-            if (id.value == '' || id.value.length < 5) {
-                alert("id는 5자리 이상으로 설정하세요");
-                id.focus();
-            } else if (password.value == "") {
-                alert("비밀번호를 입력하세요");
-                password.focus();
-            } else if (name.value == "") {
-                alert("이름을 입력하세요");
-                name.focus();
-            } else if (phonenumber.value == "") {
-                alert("전화번호를 입력하세요");
-                address.focus();
-            } else {
-                var or = confirm("가입하시겠습니까?");
-                if (or == true) {
-                    // alert('로그인하세요');
-                    document.location = 'login.html';
-                } else {
-
-                }
-            }
-
-}
-    </script>
+    <script src="../js/apply.js"></script>
 </head>
 <body>
-    <div class="apply">
+    <form class="apply" action="http://localhost:8080/applyPage" method="POST">
         <div><h2>회원가입</h2></div>
         <table>
             <tr>
                 <td>아이디</td>
-                <td><input type="text" class="input" placeholder="ID"></td>
+                <td><input type="text" class="input" placeholder="ID" name="id"></td>
             </tr>
             <tr>
                 <td>비밀번호</td>
-                <td><input type="text" class="input" placeholder="password"></td>
+                <td><input type="password" class="input" placeholder="password" name="password"></td>
+            </tr>
+            <tr>
+                <td>비밀번호 확인</td>
+                <td><input type="password" class="input" placeholder="passwordCheck"></td>
             </tr>
             <tr>
                 <td>이름</td>
-                <td><input type="text" class="input"></td>
+                <td><input type="text" class="input" name="name"></td>
             </tr>
             <tr>
                 <td>연락처</td>
-                <td><input type="text" class="input"></td>
+                <td><input type="text" class="input" name="phoneNumber"></td>
             </tr>
         </table>
-        <button class="submit" onclick="apply()">가입하기</button>
-    </div>
+        <button type="submit" class="submit" onclick="apply()">가입하기</button>
+    </form>
 </body>
 </html>
