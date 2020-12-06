@@ -8,21 +8,22 @@
     "application": [],
     "acception": [
         {
-            "id": "rapa1130",
+            "id": "19101238",
             "time": "2022년 1월 12일",
             "location": "강원도 속초시 교동"
         }
     ],
     "photoInfo": {
-        "profileSrc": "../img/profile/model_profile.jpg",
+        "profileSrc": "../photo/92b613bbd94d14f564b678dfb64b60e9",
         "detailSrc": [
-            "../img/profile/model_profile.jpg",
-            "../img/profile/model_profile.jpg"
+            "../photo/13d55d386cb9bd1aa470ad72f02c8928"
         ],
         "photoSrcAr": [
-            "../img/profile/model_profile.jpg",
-            "../img/profile/model_profile.jpg",
-            "../img/profile/model_profile.jpg"
+            "../photo/13d55d386cb9bd1aa470ad72f02c8928",
+            "../photo/770f300861d415212beededdfef1470e",
+            "../photo/92b613bbd94d14f564b678dfb64b60e9",
+            "../photo/6e6b0421d6507800e2a7d3716291ce2a",
+            "../photo/7d4ee2823819f0ed9cd0aea2463a25a1"
         ]
     }
 }

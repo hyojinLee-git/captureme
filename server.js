@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 var multer = require('multer'); // express에 multer모듈 적용 (for 파일업로드)
-var upload = multer({ dest: 'public/photo/' })
+var upload = multer({ dest: 'public/photo/'})
 var mypageTemplate = require('./lib/mypage');
 var profileModificationTemplate=require('./lib/profileModification');
 
@@ -136,10 +136,16 @@ app.get('/profileModificationPage/setProfile/:num', function (request, response)
     response.writeHead(302, { Location: `/profileModification` });
     response.send();
 })
-app.post('/addPhotoPage',function(request,response){
+app.post('/addPhotoPage', upload.single('photo'),function(request,response){
     if (!athentication(request)) { return false; }
-    console.log(request.body.photo);
-    response.send(request.body.photo);
+    var data=fs.readFileSync(`userInfo/${request.session.userId}.json`);
+    var userInfo=JSON.parse(data);
+    var len=userInfo.photoInfo.photoSrcAr.length;
+    var src=`../photo/${request.file.filename}`;
+    userInfo.photoInfo.photoSrcAr[len]=src;
+    fs.writeFileSync(`userInfo/${request.session.userId}.json`,JSON.stringify(userInfo),'utf8');
+    response.writeHead(302, { Location: `/profileModification` });
+    response.send();
 })
 
 app.get('/detail', function (request, response) {
