@@ -1,0 +1,6 @@
+<img src 쿼리>
+../img/model_detail
+
+
+<join 쿼리>
+SELECT test_image.No,test_image.id,profileSrc,representSrc,test_detail.detailSrc FROM test_image LEFT JOIN test_detail ON test_image.id=test_detail.id;

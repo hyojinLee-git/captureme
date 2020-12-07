@@ -1,28 +1,17 @@
 {
-    "account": {
-        "id": "rapa1130",
-        "password": "todrkreofh1!",
-        "name": "안병헌",
-        "phoneNumber": "01021681150"
+    "account":{
+        "id":"rapa1130",
+        "password":"todrkreofh1!",
+        "name":"안병헌",
+        "phoneNumber":"01021681150"
     },
-    "application": [],
-    "acception": [
-        {
-            "id": "rapa1130",
-            "time": "2022년 1월 12일",
-            "location": "강원도 속초시 교동"
-        }
+    "application":[],
+    "acception":[
+        {"id":"rapa1130","time":"2022년 1월 12일","location":"강원도 속초시 교동"}
     ],
-    "photoInfo": {
-        "profileSrc": "../img/profile/model_profile.jpg",
-        "detailSrc": [
-            "../img/profile/model_profile.jpg",
-            "../img/profile/model_profile.jpg"
-        ],
-        "photoSrcAr": [
-            "../img/profile/model_profile.jpg",
-            "../img/profile/model_profile.jpg",
-            "../img/profile/model_profile.jpg"
-        ]
+    "photoInfo":{
+        "profileSrc":"../img/profile/model_profile.jpg",
+        "detailSrc":["../img/model_detail/model_detail1.jfif","../img/model_detail/model_detail2.jpg","../img/model_detail/model_detail3.jpg"],
+        "photoSrcAr":["../img/profile/model_profile.jpg","../img/profile/model_profile.jpg"]
     }
 }
