@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+{"account":{"id":"rapa1130","password":"todrkreofh1!","name":"안병헌","phoneNumber":"01021681150"},"application":[],"acception":[],"photoInfo":{"profileSrc":"../photo/13d55d386cb9bd1aa470ad72f02c8928","detailSrc":["../photo/13d55d386cb9bd1aa470ad72f02c8928"],"photoSrcAr":["../photo/13d55d386cb9bd1aa470ad72f02c8928","../photo/770f300861d415212beededdfef1470e","../photo/92b613bbd94d14f564b678dfb64b60e9","../photo/6e6b0421d6507800e2a7d3716291ce2a","../photo/7d4ee2823819f0ed9cd0aea2463a25a1"]}}
+=======
 {
     "account":{
         "id":"rapa1130",
@@ -15,3 +18,4 @@
         "photoSrcAr":["../img/profile/model_profile.jpg","../img/profile/model_profile.jpg"]
     }
 }
+>>>>>>> 9e7f4b7106237a6ee282db551234109124b81e98

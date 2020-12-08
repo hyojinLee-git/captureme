@@ -4,14 +4,25 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 var multer = require('multer'); // express에 multer모듈 적용 (for 파일업로드)
-var upload = multer({ dest: 'public/photo/' })
+var upload = multer({ dest: 'public/photo/'})
 var mypageTemplate = require('./lib/mypage');
 var profileModificationTemplate=require('./lib/profileModification');
 var detail=require('./lib/detail');
 var main=require('./lib/main');
 var mysql=require('mysql');
-var db=require('./lib/db');
+<<<<<<< HEAD
+//var db=require('./lib/db');
 
+=======
+
+var db=mysql.createConnection({
+    host:'localhost',
+    user: 'root',
+    password:'1111',
+    database:'captureme'
+  });
+db.connect();
+>>>>>>> 3466fb468325619f1887e481f0208d5989e8fe9c
 
 
 var app = express();
@@ -112,10 +123,9 @@ app.get('/profileModificationPage/setRepresent/:num', function (request, respons
     if (!athentication(request)) { return false; }
     var data=fs.readFileSync(`userInfo/${request.session.userId}.json`);
     var userInfo=JSON.parse(data);
-    var len=userInfo.photoInfo.detailSrc.length;
-    console.log("len:"+len);
+    var len=userInfo.photoInfo.detailSrcAr.length;
     if(len<=2){
-        userInfo.photoInfo.detailSrc[len]=userInfo.photoInfo.photoSrcAr[request.params.num];
+        userInfo.photoInfo.detailSrcAr[len]=userInfo.photoInfo.photoSrcAr[request.params.num];
         fs.writeFileSync(`userInfo/${request.session.userId}.json`,JSON.stringify(userInfo),'utf8');
         response.writeHead(302, { Location: `/profileModification` });
         response.send();
@@ -135,11 +145,16 @@ app.get('/profileModificationPage/setProfile/:num', function (request, response)
     response.send();
 })
 
-
-app.post('/addPhotoPage',function(request,response){
+app.post('/addPhotoPage', upload.single('photo'),function(request,response){
     if (!athentication(request)) { return false; }
-    console.log(request.body.photo);
-    response.send(request.body.photo);
+    var data=fs.readFileSync(`userInfo/${request.session.userId}.json`);
+    var userInfo=JSON.parse(data);
+    var len=userInfo.photoInfo.photoSrcAr.length;
+    var src=`../photo/${request.file.filename}`;
+    userInfo.photoInfo.photoSrcAr[len]=src;
+    fs.writeFileSync(`userInfo/${request.session.userId}.json`,JSON.stringify(userInfo),'utf8');
+    response.writeHead(302, { Location: `/profileModification` });
+    response.send();
 })
 
 
@@ -151,7 +166,7 @@ app.get('/apply', function (request, response) {
     })
 })
 
-//마이페이지에서 업로드 후 join or apply에서 업로드 후 join?
+// 마이페이지에서 업로드 후 join or apply에서 업로드 후 join?
 app.post('/applyPage', function (request, response) {
     var data=fs.readFileSync('userInfo/_ui.json','utf8');
     var body=JSON.parse(data);
@@ -173,18 +188,18 @@ app.get('/logoutPage', function (request, response) {
     response.send();
 })
 
-app.get('/main', function (request, response) {
-    if (!athentication(request)) { return false; }
-        main.html(request,response);
+// app.get('/main', function (request, response) {
+//     if (!athentication(request)) { return false; }
+//         main.html(request,response);
 
-})
+// })
 
-app.get('/:pageId', function (request, response) {
-    if (!athentication(request)) { return false; }
-    var id=request.params.pageId;
-    detail.html(request,id,response);
+// app.get('/:pageId', function (request, response) {
+//     if (!athentication(request)) { return false; }
+//     var id=request.params.pageId;
+//     detail.html(request,id,response);
     
-})
+// })
 
 app.listen(port, function () {
     console.log("server is running at " + port + " port");
