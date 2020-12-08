@@ -8,7 +8,7 @@ var upload = multer({ dest: 'public/photo/' })
 var mypageTemplate = require('./lib/mypage');
 var profileModificationTemplate=require('./lib/profileModification');
 var detail=require('./lib/detail');
-
+var main=require('./lib/main');
 
 
 var app = express();
@@ -56,10 +56,8 @@ app.post('/loginPage', function (request, response) {
 
 app.get('/main', function (request, response) {
     if (!athentication(request)) { return false; }
-    fs.readFile('public/html/main.html', function (err, data) {
-        if (err) throw err;
-        response.send(data.toString());
-    })
+        main.html(request,response);
+
 })
 
 app.get('/mypage', function (request, response) {
@@ -145,7 +143,7 @@ app.post('/addPhotoPage',function(request,response){
     response.send(request.body.photo);
 })
 
-app.get('/detail/:pageId', function (request, response) {
+app.get('/:pageId', function (request, response) {
     if (!athentication(request)) { return false; }
     var id=request.params.pageId;
     detail.html(request,id,response);
