@@ -10,13 +10,8 @@ var profileModificationTemplate=require('./lib/profileModification');
 var detail=require('./lib/detail');
 var main=require('./lib/main');
 var mysql=require('mysql');
-var db=mysql.createConnection({
-    host:'localhost',
-    user: 'root',
-    password:'1111',
-    database:'captureme'
-  });
-db.connect();
+var db=require('./lib/db');
+
 
 
 var app = express();
@@ -61,8 +56,6 @@ app.post('/loginPage', function (request, response) {
     }
 
 })
-
-
 
 app.get('/mypage', function (request, response) {
     if (!athentication(request)) { return false; }

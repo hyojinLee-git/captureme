@@ -51,16 +51,15 @@ width:100%;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-    width:auto;
-    min-width: 100px;
-    height: 25%;
+    width:120px;
+    height: 120px;
     min-height: 100px;
     border-radius: 100%;
     opacity: 0;
     z-index: 3;
     background-size: cover ;
-    /* background-repeat: no-repeat;
-    background-position: center center; */
+    background-repeat: no-repeat;
+    background-position: center center; 
     /* border:solid white 10px; */
 }
 div .rectangle{
@@ -76,12 +75,16 @@ div .rectangle{
 }
 div .text{
     position: absolute;
+    text-align: center;
+    left:50%;
     bottom: 0;
+    transform: translateX(-50%);
     opacity: 0;
     color: black;
     /* border: solid 3px red; */
     box-shadow: none;
     margin: 1rem;
+    margin-left: 0;
 
 }
 .container:hover .overlay{

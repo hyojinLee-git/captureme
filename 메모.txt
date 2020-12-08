@@ -5,5 +5,8 @@
 <join 쿼리>
 SELECT test_image.No,test_image.id,profileSrc,representSrc,test_detail.detailSrc FROM test_image LEFT JOIN test_detail ON test_image.id=test_detail.id;
 
+<이름 가져오는 쿼리>
+SELECT name FROM test LEFT JOIN test_image ON test_image.id=test.id;
+
 test_image에 profile, represent 업로드
 test_detail에 상세사진 업로드
