@@ -114,10 +114,9 @@ app.get('/profileModificationPage/setRepresent/:num', function (request, respons
     if (!athentication(request)) { return false; }
     var data=fs.readFileSync(`userInfo/${request.session.userId}.json`);
     var userInfo=JSON.parse(data);
-    var len=userInfo.photoInfo.detailSrc.length;
-    console.log("len:"+len);
+    var len=userInfo.photoInfo.detailSrcAr.length;
     if(len<=2){
-        userInfo.photoInfo.detailSrc[len]=userInfo.photoInfo.photoSrcAr[request.params.num];
+        userInfo.photoInfo.detailSrcAr[len]=userInfo.photoInfo.photoSrcAr[request.params.num];
         fs.writeFileSync(`userInfo/${request.session.userId}.json`,JSON.stringify(userInfo),'utf8');
         response.writeHead(302, { Location: `/profileModification` });
         response.send();
