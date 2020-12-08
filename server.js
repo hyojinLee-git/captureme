@@ -7,6 +7,18 @@ var multer = require('multer'); // express에 multer모듈 적용 (for 파일업
 var upload = multer({ dest: 'public/photo/'})
 var mypageTemplate = require('./lib/mypage');
 var profileModificationTemplate=require('./lib/profileModification');
+var detail=require('./lib/detail');
+var main=require('./lib/main');
+var mysql=require('mysql');
+
+var db=mysql.createConnection({
+    host:'localhost',
+    user: 'root',
+    password:'1111',
+    database:'captureme'
+  });
+db.connect();
+
 
 var app = express();
 var port = 8080;
@@ -51,13 +63,7 @@ app.post('/loginPage', function (request, response) {
 
 })
 
-app.get('/main', function (request, response) {
-    if (!athentication(request)) { return false; }
-    fs.readFile('public/html/main.html', function (err, data) {
-        if (err) throw err;
-        response.send(data.toString());
-    })
-})
+
 
 app.get('/mypage', function (request, response) {
     if (!athentication(request)) { return false; }
@@ -135,6 +141,7 @@ app.get('/profileModificationPage/setProfile/:num', function (request, response)
     response.writeHead(302, { Location: `/profileModification` });
     response.send();
 })
+
 app.post('/addPhotoPage', upload.single('photo'),function(request,response){
     if (!athentication(request)) { return false; }
     var data=fs.readFileSync(`userInfo/${request.session.userId}.json`);
@@ -147,35 +154,49 @@ app.post('/addPhotoPage', upload.single('photo'),function(request,response){
     response.send();
 })
 
-app.get('/detail', function (request, response) {
-    if (!athentication(request)) { return false; }
-    fs.readFile('public/html/detail.html', function (err, data) {
-        if (err) throw err;
-        response.send(data.toString());
-    })
-})
+
+
 app.get('/apply', function (request, response) {
     fs.readFile('public/html/apply.html', function (err, data) {
         if (err) throw err;
         response.send(data.toString());
     })
 })
+
+// 마이페이지에서 업로드 후 join or apply에서 업로드 후 join?
 app.post('/applyPage', function (request, response) {
     var data=fs.readFileSync('userInfo/_ui.json','utf8');
     var body=JSON.parse(data);
     body.account=request.body;
-
-    fs.writeFile(`./userInfo/${body.account.id}.json`, JSON.stringify(body), 'utf8', function (err) {
-        if (err) throw err;
-        response.writeHead(302, { Location: `/` });
-        response.send();
+    //console.log(body.account);
+    db.query(`INSERT INTO test (id,password,name,phoneNumber) VALUES(?,?,?,?)`,[body.account.id,body.account.password,body.account.name,body.account.phoneNumber],function(err,data){
+        if(err){throw err}
+        fs.writeFile(`./userInfo/${body.account.id}.json`, JSON.stringify(body), 'utf8', function (err) {
+            if (err) throw err;
+            response.writeHead(302, { Location: `/` });
+            response.send();
+        });
     })
 })
+
 app.get('/logoutPage', function (request, response) {
     request.session.destroy();
     response.writeHead(302, { Location: `/` });
     response.send();
 })
+
+// app.get('/main', function (request, response) {
+//     if (!athentication(request)) { return false; }
+//         main.html(request,response);
+
+// })
+
+// app.get('/:pageId', function (request, response) {
+//     if (!athentication(request)) { return false; }
+//     var id=request.params.pageId;
+//     detail.html(request,id,response);
+    
+// })
 
 app.listen(port, function () {
     console.log("server is running at " + port + " port");

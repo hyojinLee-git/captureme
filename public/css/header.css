@@ -1,0 +1,79 @@
+.CaptureMe {
+	color: rgba(255, 255, 255, 0.7);
+    font-size: 2rem;
+    display: inline-block;
+    padding-left: 1.5rem;
+    
+}
+a{
+    text-decoration: none;
+}
+
+.search {
+    height: 3rem;
+    display: inline-flex;
+    position: relative;
+    left: 50%;
+    transform: translateX(-70%);
+}
+.search #searchbar{
+    width: 550px;
+    margin-right: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    border-style: none;
+}
+
+.search button{
+    border-radius: 100%;
+    font-size: 20px;
+    background-color:rgba(255, 255, 255, 0.05) ;
+}
+
+.search button:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#header .configure{
+    padding: 0;
+}
+
+#header ul{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    padding-right: 1rem;
+}
+#header ul li{
+    display: inline-flex;
+    list-style: none;
+    margin-left: 3px;
+    padding: 0.3rem;
+}
+.none{
+    margin-right: 0;
+}
+.none:hover{
+    background: rgba(255, 255, 255, 0);
+}
+.toggle_button::after{
+    content: '\e801';
+    font-family: fontello;
+}
+
+#header ul li a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    
+}
+
+#header ul li:hover{
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+}
+
+.configure{
+	position: absolute;
+	right: 10px;
+	padding:20px;
+}
