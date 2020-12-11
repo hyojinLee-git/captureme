@@ -155,9 +155,9 @@ app.post('/addPhotoPage', upload.single('photo'),function(request,response){
     response.writeHead(302, { Location: `/profileModification` });
     response.send();
 })
-app.get('/photoApply',function(request,response){
+app.get('/photoApply/:id',function(request,response){
     if (!athentication(request)) { return false; }
-    response.send(photoApplyTemplate.html());
+    response.send(photoApplyTemplate.html(request));
 })
 app.post('/photoApplyPage/:id',function(request,response){
     if (!athentication(request)) { return false; }
