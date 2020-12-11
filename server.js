@@ -7,9 +7,11 @@ var multer = require('multer'); // express에 multer모듈 적용 (for 파일업
 var upload = multer({ dest: 'public/photo/'})
 var mypageTemplate = require('./lib/mypage');
 var profileModificationTemplate=require('./lib/profileModification');
+var photoApplyTemplate=require('./lib/photoApply');
 var detail=require('./lib/detail');
 var main=require('./lib/main');
 var mysql=require('mysql');
+const photoApply = require("./lib/photoApply");
 
 var db=mysql.createConnection({
     host:'localhost',
@@ -153,7 +155,24 @@ app.post('/addPhotoPage', upload.single('photo'),function(request,response){
     response.writeHead(302, { Location: `/profileModification` });
     response.send();
 })
-
+app.get('/photoApply',function(request,response){
+    if (!athentication(request)) { return false; }
+    response.send(photoApplyTemplate.html());
+})
+app.post('/photoApplyPage/:id',function(request,response){
+    if (!athentication(request)) { return false; }
+    var data=fs.readFileSync(`userInfo/${request.params.id}.json`);
+    var userInfo=JSON.parse(data);
+    var body=request.body;
+    userInfo.application[userInfo.application.length]={
+            id: request.session.userId,
+            time: body.time,
+            location: body.location
+    }
+    fs.writeFileSync(`userInfo/${request.params.id}.json`,JSON.stringify(userInfo),'utf8');
+    response.writeHead(302, { Location: `/main` });
+    response.send();
+})
 
 
 app.get('/apply', function (request, response) {
@@ -195,7 +214,6 @@ app.get('/logoutPage', function (request, response) {
 //     if (!athentication(request)) { return false; }
 //     var id=request.params.pageId;
 //     detail.html(request,id,response);
-    
 // })
 
 app.listen(port, function () {
