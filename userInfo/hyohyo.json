@@ -1,11 +1,1 @@
-{"account":{"id":"hyohyo","password":"2353","name":"이효진","phoneNumber":"34562353"},
-"application":[],
-    "acception":[
-        {"id":"rapa1130","time":"2022년 1월 12일","location":"강원도 속초시 교동"}
-    ],
-    "photoInfo":{
-        "profileSrc":"../img/profile/taeyeon_profile",
-        "detailSrc":["../img/model_detail/taeyeon1.jpg","../img/model_detail/taeyeon2.jpg","../img/model_detail/taeyeon3.jpg"],
-        "photoSrcAr":["../img/profile/model_profile.jpg","../img/profile/model_profile.jpg"]
-    }
-}
+{"account":{"id":"hyohyo","password":"2353","name":"이효진","phoneNumber":"34562353"},"application":[],"acception":[{"id":"rapa1130","time":"2022년 1월 12일","location":"강원도 속초시 교동"}],"photoInfo":{"profileSrc":"../photo/c5da2db675cbaac049fa47ad2941f196","detailSrc":["../img/model_detail/taeyeon1.jpg","../img/model_detail/taeyeon2.jpg","../img/model_detail/taeyeon3.jpg"],"photoSrcAr":["../photo/c5da2db675cbaac049fa47ad2941f196","../photo/28492492c00a1c4054051c0dabb42116","../photo/7ba97888545d0f644a4e4c70cee04e1e"]}}
