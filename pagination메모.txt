@@ -1,0 +1,6 @@
+pagenation
+
+url은 /main/pagenum
+페이지 개수 계산해서 띄우기
+
+쿼리는 SELECT * FROM 테이블명 LIMIT 시작넘버,개수

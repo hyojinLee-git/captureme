@@ -1,0 +1,62 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+    <link rel="stylesheet" href="../css/detail.css">
+    <!-- <link rel="stylesheet" href="../css/main.css"> -->
+    <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" href="../css/header.css">
+
+
+</head>
+<style>
+    form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.2);
+        height: 500px;
+        flex-direction: column;
+        margin: 50px;
+    }
+
+    input {
+        max-width: 50%;
+    }
+    textarea{
+        font-size: 20px;
+    }
+</style>
+
+<body>
+    <header id="header">
+        <span class="CaptureMe"><a href="http://localhost:8080/main">캡쳐미</a></span>
+        <div class="configure">
+            <a href="photographer"><input type="button" value="사진사" id="toggle_button"></a>
+            <ul>
+                <li><a href="http://localhost:8080/mypage">마이페이지</a></li>
+                <li><a href="http://localhost:8080/logoutPage">logout</a></li>
+            </ul>
+        </div>
+    </header>
+    <section id="main">
+        <form action="http://localhost:8080/photoApplyPage" method="post">
+            <p>언제까지?</p>
+            <input type="date" name="time" required>
+            <p>어디서?</p>
+            <textarea name="location" required rows="1" cols="40" placeholder="사진 찍을 장소를 입력해주세요"></textarea>
+            <hr>
+            <br>
+            <input type="submit" value="사진 신청" onclick="checkDate()">
+        </form>
+    </section>
+    <footer class="contactInfo">
+        <div>Copyright ⓒ 2020 captureMe All Rights Reserved</div>
+    </footer>
+    <!--script-->
+    <script type="text/javascript" src="../js/checkDate.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+test: 이름, 아이디, 비번, 연락처
+test_image: 아이디, 프사, 대표사진
+test_detail: 아이디, 디테일 사진
+
+
+회원가입-> test에 아이디, 회원정보 저장
+마이페이지-> 디테일, 대표사진, 프로필 업로드( test_image, test_detail에 값이 있으면 update, 값이 없으면 insert)
+		1. 사진 전체 올리기: detail
+		2. setprofile, setrepresent 실행(setprofile하면 test_detail에서 지워야해..)
+		3. 값이 있으면 update, 없으면 insert
+	->setprofile: 프로필
+메인-> test_image 가져와서 띄우기
+디테일/아이디->test_detail 가져와서 띄우기
+
+
+
