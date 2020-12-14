@@ -81,7 +81,6 @@ div .text{
     transform: translateX(-50%);
     opacity: 0;
     color: black;
-    /* border: solid 3px red; */
     box-shadow: none;
     margin: 1rem;
     margin-left: 0;
