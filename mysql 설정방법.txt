@@ -2,6 +2,7 @@
 2. ./lib/db.js에서 password를 설정한 비밀번호로 변경(현재는 1111)
 3. 콘솔에서 mysql -uroot -p로 접속, 비밀번호 입력
 4. CREATE DATABASE captureme;
+4-1. USE captureme;
 5. CREATE TABLE test (
 	No INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	id CHAR(10) NOT NULL,
@@ -24,15 +25,13 @@
 8-1. DESC tablename;으로 table이 잘 형성되었는지 확인해주세요
 
 9. 회원가입->아이디 생성(mysql captureme db에 정보가 올라감)->로그인->마이페이지
-->사진업로드(test_detail에 업로드됨)->프사하기 클릭(test_image의 profileSrc에 정보업로드)->대표사진 설정 클릭(test_image의 representSrc에 정보업로드)
-반드시 이순서로 해야함. 대표사진 설정 후 프로필 설정하면 오류날 가능성 있음
+->사진업로드(test_detail에 업로드됨)->프사하기 클릭(test_image의 profileSrc에 정보업로드)or대표사진 설정 클릭(test_image의 representSrc에 정보업로드)
+->메인페이지에 템플릿 생성
 
 
-ps.삭제기능 완성 덜됨
-ps2. mysql의 테이블 정보 확인하고 싶을때 SELECT * FROM tablename;
+ps. mysql의 테이블 정보 확인하고 싶을때 SELECT * FROM tablename;
 
 
-100%완성은 아직아니에요ㅠㅠ 오류나 궁금한거 생기시면 카톡해주세요
 
 
 

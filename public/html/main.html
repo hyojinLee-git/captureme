@@ -68,14 +68,15 @@
         <!--서버에서 처리-->
         <div class="page_number" style="border: solid,3px,red;">
             <input type="button" value="<">
-            <input type="button" value="1">
-            <a href='main_page2.html'><input type="button" value="2"></a>
-            <input type="button" value="3">
-            <input type="button" value=">">
+            <input type="button" value="1" style="text-decoration: underline;" class="number active">
+            <a href='main_page2.html'><input type="button" value="2" class="number"></a>
+            <input type="button" value="3" class="number">
+            <input type="button" value=">" onclick="nextPage()">
         </div>
     </section>
     <footer class="contactInfo">
         <div>Copyright ⓒ 2020 captureMe All Rights Reserved</div>
     </footer>
+
 </body>
 </html>

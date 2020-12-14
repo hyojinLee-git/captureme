@@ -10,7 +10,6 @@ var profileModificationTemplate=require('./lib/profileModification');
 var photoApplyTemplate=require('./lib/photoApply');
 var detail=require('./lib/detail');
 var main=require('./lib/main');
-var mysql=require('mysql');
 const photoApply = require("./lib/photoApply");
 var db=require('./lib/db');
 
@@ -26,7 +25,6 @@ function checkApplyUser(request) {
 function athentication(request) {
     return request.session.is_logined;
 }
-
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -106,12 +104,13 @@ app.get('/profileModificationPage/delete/:num', function (request, response) {
     var data=fs.readFileSync(`userInfo/${request.session.userId}.json`);
     var userInfo=JSON.parse(data);
     db.query(`SELECT * FROM test_image WHERE representSrc=? OR profileSrc=?`,[userInfo.photoInfo.photoSrcAr[request.params.num],userInfo.photoInfo.photoSrcAr[request.params.num]],function(err,data){
+        if(err){throw err;}
         if(data.length!=0){
             response.redirect(`/profileModification/error`);
         }
         else{
-            db.query(`DELETE FROM test_detail WHERE detailSrc=? `,[userInfo.photoInfo.photoSrcAr[request.params.num]],function(err,data){
-                if (err){throw err;}
+            db.query(`DELETE FROM test_detail WHERE detailSrc=? `,[userInfo.photoInfo.photoSrcAr[request.params.num]],function(err2,data){
+                if (err2){throw err2;}
                 userInfo.photoInfo.photoSrcAr.splice(request.params.num,1);
                 fs.writeFileSync(`userInfo/${request.session.userId}.json`,JSON.stringify(userInfo),'utf8');
                 response.writeHead(302, { Location: `/profileModification` });
@@ -252,7 +251,6 @@ app.get('/main/:pagenum', function (request, response) {
     if (!athentication(request)) { return false; }
         var pagenum=request.params.pagenum
         main.pagehtml(request,pagenum,response);
-
 })
 
 app.get('/:pageId', function (request, response) {
