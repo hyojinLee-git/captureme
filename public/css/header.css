@@ -19,15 +19,23 @@ a{
 .search #searchbar{
     width: 550px;
     margin-right: 0.5rem;
+    padding-left: 1rem;
     background-color: rgba(255, 255, 255, 0.8);
     color: black;
     border-style: none;
+    height: 3rem;
+    border-radius: 3rem;
 }
 
+.search form{
+    height: 3rem;
+}
 .search button{
     border-radius: 100%;
     font-size: 20px;
     background-color:rgba(255, 255, 255, 0.05) ;
+    width: 3rem;
+    height: 3rem;
 }
 
 .search button:hover{

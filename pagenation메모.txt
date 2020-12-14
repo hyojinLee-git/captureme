@@ -1,0 +1,13 @@
+pagenation
+
+url은 /main/pagenum
+페이지 개수 계산해서 띄우기
+
+쿼리는 SELECT * FROM 테이블명 LIMIT 시작넘버,개수
+
+
+//var startnum=pagenum*2+1
+            db.query(`SELECT test.id,name,profileSrc,representSrc FROM test LEFT JOIN test_image ON test_image.id=test.id WHERE NOT representSrc is NULL LIMIT ${startnum},2;`,function(err2,data){});
+
+startnum: 01:1/23:2/45:3
+pagenum=2-1 *2

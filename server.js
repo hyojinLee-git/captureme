@@ -12,15 +12,8 @@ var detail=require('./lib/detail');
 var main=require('./lib/main');
 var mysql=require('mysql');
 const photoApply = require("./lib/photoApply");
+var db=require('./lib/db');
 
-
-var db=mysql.createConnection({
-    host:'localhost',
-    user: 'root',
-    password:'1111',
-    database:'captureme'
-  });
-db.connect();
 
 
 var app = express();
@@ -125,38 +118,34 @@ app.get('/profileModificationPage/delete/:num', function (request, response) {
 //profile이 있다고 가정
 app.get('/profileModificationPage/setRepresent/:num', function (request, response) {
     if (!athentication(request)) { return false; }
-    var data=fs.readFileSync(`userInfo/${request.session.userId}.json`);
+    var data=fs.readFileSync(`userInfo/${request.session.userId}.json`,"utf8");
     var userInfo=JSON.parse(data);
     var len=userInfo.photoInfo.detailSrcAr.length;
+    userInfo.photoInfo.detailSrcAr[len]=userInfo.photoInfo.photoSrcAr[request.params.num];
+    fs.writeFileSync(`userInfo/${request.session.userId}.json`,JSON.stringify(userInfo),'utf8');
     db.query(`SELECT * FROM test_image WHERE id=?`,[request.session.userId],function(err,data){
         if (err){throw err; }
         console.log(data);
         if (data[0].representSrc==undefined){
             console.log('empty');
             console.log(data);
-            db.query(`UPDATE test_image SET representSrc=? WHERE id=?`,[userInfo.photoInfo.profileSrc,request.session.userId],function(err2,data){
+            db.query(`UPDATE test_image SET representSrc=? WHERE id=?`,[userInfo.photoInfo.photoSrcAr[request.params.num],request.session.userId],function(err2,data){
                 if(err2){throw err2}
             }); 
         } else{
-            db.query(`UPDATE test_image SET representSrc=? WHERE id=?`,[userInfo.photoInfo.profileSrc,request.session.userId],function(err3,data){
+            db.query(`UPDATE test_image SET representSrc=? WHERE id=?`,[userInfo.photoInfo.photoSrcAr[request.params.num],request.session.userId],function(err3,data){
                 if(err3){throw err3}
             }); 
             console.log('not empty');
             console.log(data);
         }
-        
-        
     });
-    if(len<=2){
-        userInfo.photoInfo.detailSrcAr[len]=userInfo.photoInfo.photoSrcAr[request.params.num];
-        fs.writeFileSync(`userInfo/${request.session.userId}.json`,JSON.stringify(userInfo),'utf8');
-        response.writeHead(302, { Location: `/profileModification` });
-        response.send();
-    }
-    else{
-        response.writeHead(302, { Location: `/profileModification` });
-        response.send();
-    }
+    response.writeHead(302, { Location: `/profileModification` });
+    response.send();
+
+
+ 
+    
 })
 app.get('/profileModificationPage/setProfile/:num', function (request, response) {
     if (!athentication(request)) { return false; }
@@ -168,19 +157,13 @@ app.get('/profileModificationPage/setProfile/:num', function (request, response)
     response.send();
     db.query(`SELECT * FROM test_image WHERE id=?`,[request.session.userId],function(err,data){
         if (err){throw err; }
-        console.log(data);
         if (data.length==0){
-            console.log('empty');
-            console.log(data);
-            
             db.query(`INSERT INTO test_image (id,profileSrc) VALUES(?,?)`,[request.session.userId,userInfo.photoInfo.profileSrc],function(err,data){
 
             }); 
         } else{
             db.query(`UPDATE test_image SET profileSrc=? WHERE id=?`,[userInfo.photoInfo.profileSrc,request.session.userId],function(err,data){
             }); 
-            console.log('not empty');
-            console.log(data);
         }
         
     });
@@ -197,7 +180,6 @@ app.post('/addPhotoPage', upload.single('photo'),function(request,response){
     userInfo.photoInfo.photoSrcAr[len]=src;
     db.query(`INSERT INTO test_detail (id,detailSrc) VALUES(?,?)`,[request.session.userId,src],function(err,result){
         fs.writeFileSync(`userInfo/${request.session.userId}.json`,JSON.stringify(userInfo),'utf8');
-        //console.log('complete');
         response.writeHead(302, { Location: `/profileModification` });
         response.send();
     });
@@ -234,7 +216,6 @@ app.post('/applyPage', function (request, response) {
     var data=fs.readFileSync('userInfo/_ui.json','utf8');
     var body=JSON.parse(data);
     body.account=request.body;
-    //console.log(body.account);
     db.query(`INSERT INTO test (id,password,name,phoneNumber) VALUES(?,?,?,?)`,[body.account.id,body.account.password,body.account.name,body.account.phoneNumber],function(err,data){
         if(err){throw err}
         fs.writeFile(`./userInfo/${body.account.id}.json`, JSON.stringify(body), 'utf8', function (err) {
@@ -257,14 +238,19 @@ app.get('/main', function (request, response) {
 
 })
 
+app.get('/search',function(request,response){
+    if (!athentication(request)) { return false; }
+    var id=request.query.search
+    console.log(request.query.search);
+    main.searchpage(request,id,response)
+})
+
 app.get('/main/:pagenum', function (request, response) {
     if (!athentication(request)) { return false; }
-        //console.log('여기');
         var pagenum=request.params.pagenum
         main.pagehtml(request,pagenum,response);
 
 })
-
 
 //프사도 뜬다
 app.get('/:pageId', function (request, response) {
