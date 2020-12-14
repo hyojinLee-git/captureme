@@ -101,21 +101,30 @@ app.get('/profileModification', function (request, response) {
     response.send(profileModificationTemplate.html(request));
 })
 
-//대표사진일때 해제알림, 프사일때 해제알림 필요
 app.get('/profileModificationPage/delete/:num', function (request, response) {
     if (!athentication(request)) { return false; }
     var data=fs.readFileSync(`userInfo/${request.session.userId}.json`);
     var userInfo=JSON.parse(data);
-    //console.log(userInfo.photoInfo.photoSrcAr[request.params.num]);
-    db.query(`DELETE FROM test_detail WHERE detailSrc=? `,[userInfo.photoInfo.photoSrcAr[request.params.num]],function(err,data){});
-    userInfo.photoInfo.photoSrcAr.splice(request.params.num,1);
-    fs.writeFileSync(`userInfo/${request.session.userId}.json`,JSON.stringify(userInfo),'utf8');
-    
-    response.writeHead(302, { Location: `/profileModification` });
-    response.send();
+    db.query(`SELECT * FROM test_image WHERE representSrc=? OR profileSrc=?`,[userInfo.photoInfo.photoSrcAr[request.params.num],userInfo.photoInfo.photoSrcAr[request.params.num]],function(err,data){
+        if(data.length!=0){
+            response.redirect(`/profileModification/error`);
+        }
+        else{
+            db.query(`DELETE FROM test_detail WHERE detailSrc=? `,[userInfo.photoInfo.photoSrcAr[request.params.num]],function(err,data){
+                if (err){throw err;}
+                userInfo.photoInfo.photoSrcAr.splice(request.params.num,1);
+                fs.writeFileSync(`userInfo/${request.session.userId}.json`,JSON.stringify(userInfo),'utf8');
+                response.writeHead(302, { Location: `/profileModification` });
+                response.send();
+            });
+        }
+    })
 })
 
-//profile이 있다고 가정
+app.get('/profileModification/error',function(request,response){
+    response.send('<script type="text/javascript">alert("대표사진 또는 프로필 사진을 바꿔주세요");window.location="/profileModification"</script>')
+})
+
 app.get('/profileModificationPage/setRepresent/:num', function (request, response) {
     if (!athentication(request)) { return false; }
     var data=fs.readFileSync(`userInfo/${request.session.userId}.json`,"utf8");
@@ -126,10 +135,10 @@ app.get('/profileModificationPage/setRepresent/:num', function (request, respons
     db.query(`SELECT * FROM test_image WHERE id=?`,[request.session.userId],function(err,data){
         if (err){throw err; }
         console.log(data);
-        if (data[0].representSrc==undefined){
+        if (data.length==0){
             console.log('empty');
             console.log(data);
-            db.query(`UPDATE test_image SET representSrc=? WHERE id=?`,[userInfo.photoInfo.photoSrcAr[request.params.num],request.session.userId],function(err2,data){
+            db.query(`INSERT INTO test_image (id,representSrc) VALUES(?,?)`,[request.session.userId,userInfo.photoInfo.photoSrcAr[request.params.num]],function(err2,data){
                 if(err2){throw err2}
             }); 
         } else{
@@ -142,33 +151,28 @@ app.get('/profileModificationPage/setRepresent/:num', function (request, respons
     });
     response.writeHead(302, { Location: `/profileModification` });
     response.send();
-
-
- 
-    
 })
+
 app.get('/profileModificationPage/setProfile/:num', function (request, response) {
     if (!athentication(request)) { return false; }
     var data=fs.readFileSync(`userInfo/${request.session.userId}.json`);
     var userInfo=JSON.parse(data);
     userInfo.photoInfo.profileSrc=userInfo.photoInfo.photoSrcAr[request.params.num];
     fs.writeFileSync(`userInfo/${request.session.userId}.json`,JSON.stringify(userInfo),'utf8');
-    response.writeHead(302, { Location: `/profileModification` });
-    response.send();
     db.query(`SELECT * FROM test_image WHERE id=?`,[request.session.userId],function(err,data){
         if (err){throw err; }
         if (data.length==0){
-            db.query(`INSERT INTO test_image (id,profileSrc) VALUES(?,?)`,[request.session.userId,userInfo.photoInfo.profileSrc],function(err,data){
-
+            db.query(`INSERT INTO test_image (id,profileSrc) VALUES(?,?)`,[request.session.userId,userInfo.photoInfo.profileSrc],function(err2,data){
+                if(err2){throw err2;}
             }); 
         } else{
-            db.query(`UPDATE test_image SET profileSrc=? WHERE id=?`,[userInfo.photoInfo.profileSrc,request.session.userId],function(err,data){
+            db.query(`UPDATE test_image SET profileSrc=? WHERE id=?`,[userInfo.photoInfo.profileSrc,request.session.userId],function(err3,data){
+                if(err3){throw err3;}
             }); 
-        }
-        
+        } 
     });
-    
-
+    response.writeHead(302, { Location: `/profileModification` });
+    response.send();
 })
 
 app.post('/addPhotoPage', upload.single('photo'),function(request,response){
@@ -184,10 +188,12 @@ app.post('/addPhotoPage', upload.single('photo'),function(request,response){
         response.send();
     });
 })
+
 app.get('/photoApply/:id',function(request,response){
     if (!athentication(request)) { return false; }
     response.send(photoApplyTemplate.html(request));
 })
+
 app.post('/photoApplyPage/:id',function(request,response){
     if (!athentication(request)) { return false; }
     var data=fs.readFileSync(`userInfo/${request.params.id}.json`);
@@ -203,7 +209,6 @@ app.post('/photoApplyPage/:id',function(request,response){
     response.send();
 })
 
-
 app.get('/apply', function (request, response) {
     fs.readFile('public/html/apply.html', function (err, data) {
         if (err) throw err;
@@ -211,7 +216,6 @@ app.get('/apply', function (request, response) {
     })
 })
 
-// 마이페이지에서 업로드 후 join or apply에서 업로드 후 join?
 app.post('/applyPage', function (request, response) {
     var data=fs.readFileSync('userInfo/_ui.json','utf8');
     var body=JSON.parse(data);
@@ -223,7 +227,7 @@ app.post('/applyPage', function (request, response) {
             response.writeHead(302, { Location: `/` });
             response.send();
         });
-    })
+    });
 })
 
 app.get('/logoutPage', function (request, response) {
@@ -235,7 +239,6 @@ app.get('/logoutPage', function (request, response) {
 app.get('/main', function (request, response) {
     if (!athentication(request)) { return false; }
         main.html(request,response);
-
 })
 
 app.get('/search',function(request,response){
@@ -252,7 +255,6 @@ app.get('/main/:pagenum', function (request, response) {
 
 })
 
-//프사도 뜬다
 app.get('/:pageId', function (request, response) {
     if (!athentication(request)) { return false; }
     var id=request.params.pageId;
