@@ -70,13 +70,25 @@ app.get(`/mypage/:pageId/:num/:decide`, function (request, response) {
     if (!athentication(request)) { return false; }
     var data = fs.readFileSync(`userInfo/${request.session.userId}.json`, "utf8");
     var userInfo = JSON.parse(data);
+    var request_id=userInfo.application[0].id
+    var request_data=fs.readFileSync(`userInfo/${request_id}.json`, "utf8");
+    var requestInfo = JSON.parse(request_data);
     var accept = userInfo.application.splice(request.params.num, 1)[0];
+
     if (request.params.decide == 'accept') {
         userInfo.acception.push(accept);
+        console.log(accept);
+        fs.writeFile(`userInfo/${request.session.userId}.json`, JSON.stringify(userInfo), 'utf8', function (err) {
+            if (err) throw err;
+        });
+        var receive=accept;
+        receive.id=request.session.userId
+        console.log(receive);
+        requestInfo.acception.push(receive);
+        fs.writeFile(`userInfo/${request_id}.json`, JSON.stringify(requestInfo), 'utf8', function (err) {
+            if (err) throw err;
+        });
     }
-    fs.writeFile(`userInfo/${request.session.userId}.json`, JSON.stringify(userInfo), 'utf8', function (err) {
-        if (err) throw err;
-    })
     response.writeHead(302, { Location: `/mypage/${request.params.pageId}` });
     response.send();
 })
