@@ -12,11 +12,10 @@ var detail=require('./lib/detail');
 var main=require('./lib/main');
 const photoApply = require("./lib/photoApply");
 var db=require('./lib/db');
-
-
-
 var app = express();
 var port = 8080;
+
+
 function checkApplyUser(request) {
     var data = fs.readFileSync(`userInfo/${request.body.id}.json`, 'utf8');
     var userInfo = JSON.parse(data);
@@ -77,13 +76,11 @@ app.get(`/mypage/:pageId/:num/:decide`, function (request, response) {
 
     if (request.params.decide == 'accept') {
         userInfo.acception.push(accept);
-        console.log(accept);
         fs.writeFile(`userInfo/${request.session.userId}.json`, JSON.stringify(userInfo), 'utf8', function (err) {
             if (err) throw err;
         });
         var receive=accept;
         receive.id=request.session.userId
-        console.log(receive);
         requestInfo.acception.push(receive);
         fs.writeFile(`userInfo/${request_id}.json`, JSON.stringify(requestInfo), 'utf8', function (err) {
             if (err) throw err;
@@ -145,10 +142,7 @@ app.get('/profileModificationPage/setRepresent/:num', function (request, respons
     fs.writeFileSync(`userInfo/${request.session.userId}.json`,JSON.stringify(userInfo),'utf8');
     db.query(`SELECT * FROM test_image WHERE id=?`,[request.session.userId],function(err,data){
         if (err){throw err; }
-        console.log(data);
         if (data.length==0){
-            console.log('empty');
-            console.log(data);
             db.query(`INSERT INTO test_image (id,representSrc) VALUES(?,?)`,[request.session.userId,userInfo.photoInfo.photoSrcAr[request.params.num]],function(err2,data){
                 if(err2){throw err2}
             }); 
@@ -156,8 +150,6 @@ app.get('/profileModificationPage/setRepresent/:num', function (request, respons
             db.query(`UPDATE test_image SET representSrc=? WHERE id=?`,[userInfo.photoInfo.photoSrcAr[request.params.num],request.session.userId],function(err3,data){
                 if(err3){throw err3}
             }); 
-            console.log('not empty');
-            console.log(data);
         }
     });
     response.writeHead(302, { Location: `/profileModification` });
@@ -255,7 +247,6 @@ app.get('/main', function (request, response) {
 app.get('/search',function(request,response){
     if (!athentication(request)) { return false; }
     var id=request.query.search
-    console.log(request.query.search);
     main.searchpage(request,id,response)
 })
 
