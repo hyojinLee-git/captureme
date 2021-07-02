@@ -31,9 +31,9 @@
 
 3. 프로젝트를 하면서 내가 만든 기능들
     - Front:
-	+ main페이지의 css부분(flex를 이용하여 사진 배치, hover을 이용해 프로필사진과 이름 띄우기)
-	+ header의 css부분(fontello를 이용한 아이콘 사용)
-    	+ detail페이지의 css부분(신청하기 버튼 컨테이너 위에 올리기)
+	- main페이지의 css부분(flex를 이용하여 사진 배치, hover을 이용해 프로필사진과 이름 띄우기)
+	- header의 css부분(fontello를 이용한 아이콘 사용)
+    	- detail페이지의 css부분(신청하기 버튼 컨테이너 위에 올리기)
     - Back:
 	+ main 페이지 이미지 템플릿 생성
 	+ detail 페이지 슬라이드 템플릿 생성
