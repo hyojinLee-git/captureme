@@ -13,7 +13,7 @@
 ## 2. Main & Detail
 
 ## 3. Sign up
-
+![미디어2](https://user-images.githubusercontent.com/59614918/127020663-4a21c3a6-110f-4358-9a39-71fe8a453290.gif)
 ## 4. File Upload & Modify
 
 ## 5. Apply & Accept
