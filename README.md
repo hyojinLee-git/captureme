@@ -1,4 +1,4 @@
-# captureme
+# CaptureMe
 
 
 ## 1. Project Introduction
